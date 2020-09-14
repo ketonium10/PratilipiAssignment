@@ -32,7 +32,7 @@ function Story({ story }) {
       //fetching stories array of user
       await db
         .collection("users")
-        .doc(user.uid)
+        .doc(user?.uid)
         .get()
         .then(doc => {
           storiesViews = doc.data().storiesViewed;
@@ -76,13 +76,13 @@ function Story({ story }) {
       //Update the users and stories database
       await db
         .collection("users")
-        .doc(user.uid)
+        .doc(user?.uid)
         .update({ storiesViewed: storiesViews })
         .catch(error => console.log(error));
 
       await db
         .collection("Stories")
-        .doc(story.id)
+        .doc(story?.id)
         .update({ total_read: total, cur_read: current })
         .catch(error => console.log(error));
 

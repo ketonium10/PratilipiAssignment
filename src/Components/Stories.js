@@ -20,11 +20,16 @@ function Stories() {
   return (
     <div className="stories">
       <div className="stories__container">
-        {stories.map(story => (
-          <div className="stories__row">
-            <Story story={story} />
-          </div>
-        ))}
+        {stories.map(
+          (story, key) => (
+            (key = 1),
+            (
+              <div className="stories__row">
+                <Story story={story} />
+              </div>
+            )
+          )
+        )}
       </div>
     </div>
   );

@@ -8,22 +8,30 @@ function Storyview() {
 
   const history = useHistory();
 
-  if (!user) {
+  if (!user || !story || !story.data) {
     history.replace("/");
   }
 
+  const updateCurrent = async e => {
+    let current = story?.data?.cur_read;
+    current = current - 1;
+    await db
+      .collection("Stories")
+      .doc(story?.id)
+      .update({ cur_read: current })
+      .catch(error => console.log(error));
+  };
+
   useEffect(() => {
+    console.log("mounted");
+    console.log(window.performance.navigation.type);
     return () => {
       //When unmounting decrement the current viewers
-      let current = story.data?.cur_read;
-      current = current - 1;
-      db.collection("Stories")
-        .doc(story?.id)
-        .update({ cur_read: current })
-        .catch(error => console.log(error));
+      console.log(window.performance.navigation.type);
+      updateCurrent();
       console.log("unmounting");
     };
-  }, []);
+  });
 
   return (
     <div className="storyview">

@@ -41,7 +41,6 @@ function Login() {
           history.push("/");
         }
         //successfully made a user with respective email and password
-        console.log(auth);
       })
       .catch(error => alert(error.message));
   };
