@@ -1,11 +1,14 @@
 .header {
-  height: 60px;
-  display: flex;
-  align-items: center;
-  background-color: black;
-  position: sticky;
-  top: 0;
+  font: 24px "opensans-bold", sans-serif;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  margin: 0 auto;
   z-index: 100;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: black;
 }
 .header__nav {
   display: flex;
