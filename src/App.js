@@ -21,8 +21,7 @@ function App() {
       } else {
         dispatch({
           type: "SET_USER",
-          user: null,
-          stories: []
+          user: null
         });
       }
     });

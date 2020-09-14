@@ -19,7 +19,7 @@ function Story({ story }) {
       let total, current, storiesViews;
       await db
         .collection("Stories")
-        .doc(story.id)
+        .doc(story?.id)
         .get()
         .then(item => {
           // incTotal(item.total_read);
@@ -48,7 +48,7 @@ function Story({ story }) {
 
       //If the user's stories array is zero, then add this story's id to user's stories array
       //and update this array in db and increment total read
-      if (storiesViews.length == 0) {
+      if (storiesViews?.length == 0) {
         storiesViews.push(story.id);
         total++;
         // setStoriesViews([...storiesViews, story.id]);
@@ -59,12 +59,12 @@ function Story({ story }) {
         //if present then do nothing and continue to next page
         //else add this story's id and increment total_read + 1
         let i = 0;
-        for (i = 0; i < storiesViews.length; i++) {
+        for (i = 0; i < storiesViews?.length; i++) {
           if (storiesViews[i] == story.id) {
             break;
           }
         }
-        if (i == storiesViews.length) {
+        if (i == storiesViews?.length) {
           storiesViews.push(story.id);
           total++;
           // var ele = story.id;
@@ -90,7 +90,7 @@ function Story({ story }) {
       story.data.cur_read = current;
       dispatch({
         type: "SET_STORY",
-        story: story.data
+        story: story
       });
 
       history.push("/storyview");
